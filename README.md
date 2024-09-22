@@ -3,6 +3,7 @@
 <div align="center">
 
 ![java](https://img.shields.io/badge/Java-17.0.12-red)
+![gson](https://img.shields.io/badge/Gson-2.11.0-red)
 ![intellij](https://img.shields.io/badge/IntelliJ-CE%202024.2.2-red)
 ![license](https://img.shields.io/badge/License-0BSD-brightgreen)
 ![update](https://img.shields.io/badge/Update-21%2FSep%2F2024-blue)
@@ -49,11 +50,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <p align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</p>
 
 ### Dependencias
-TODO: Descripción de los recursos externos que generan una dependencia para la utilización de la aplicación (librerías, frameworks, licencias de cada recurso, etc). 
-
-    Estilo de letra para diferenciar los comandos de instalación.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Esta aplicación utiliza la versión 2.11.0 de Gson (también conocido como Google Gson). Se trata de una biblioteca de código abierto para el lenguaje de programación Java que permite la serialización y deserialización entre objetos Java y su representación en notación JSON.
+Más información en https://mvnrepository.com/artifact/com.google.code.gson/gson
 
 <p align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</p>
 
