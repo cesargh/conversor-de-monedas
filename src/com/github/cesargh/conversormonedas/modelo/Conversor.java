@@ -4,11 +4,23 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.security.InvalidParameterException;
 import java.util.Map;
 
 public class Conversor {
 
-    public enum Proveedor {INDISTINTO, CURRENCY_FREAKS, EXCHANGE_RATE, OPEN_EXCHANGE_RATES};
+    public enum Proveedor {
+        INDISTINTO("Indistinto"),
+        CURRENCY_FREAKS("Currency Freaks"),
+        EXCHANGE_RATE("Exchange Rate"),
+        OPEN_EXCHANGE_RATES("Open Exchange Rates");
+
+        public final String nombre;
+
+        private Proveedor(String nombre) {
+            this.nombre = nombre;
+        }
+    };
 
     public Conversor() {
     }
@@ -55,12 +67,22 @@ public class Conversor {
 
     public double Convertir(Proveedor proveedor, String monedaOrigen, String monedaDestino, double importe) {
         Map coeficientes = ObtenerCoeficientes(proveedor);
-        try {
-            double coeficienteOrigen = Double.valueOf(coeficientes.get(monedaOrigen).toString());
-            double coeficienteDestino = Double.valueOf(coeficientes.get(monedaDestino).toString());
-            return importe * coeficienteDestino / coeficienteOrigen;
-        } catch (Exception e) {
-            throw new ConversorException("Error convirtiendo importe.", e);
+        var monOrigen = coeficientes.get(monedaOrigen);
+        var monDestino = coeficientes.get(monedaDestino);
+        if (monOrigen == null && monDestino == null) {
+            throw new ConversorException("Las monedas no existen.", new InvalidParameterException());
+        } else if(monOrigen == null) {
+            throw new ConversorException("Las moneda de origen no existe.", new InvalidParameterException());
+        } else if(monDestino == null) {
+            throw new ConversorException("Las moneda de destino no existe.", new InvalidParameterException());
+        } else {
+            try {
+                double coeficienteOrigen = Double.valueOf(monOrigen.toString());
+                double coeficienteDestino = Double.valueOf(monDestino.toString());
+                return importe * coeficienteDestino / coeficienteOrigen;
+            } catch (Exception e) {
+                throw new ConversorException("Error convirtiendo importe.", e);
+            }
         }
     }
 
