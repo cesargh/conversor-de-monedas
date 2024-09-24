@@ -10,7 +10,6 @@ import java.util.Map;
 public class Conversor {
 
     public enum Proveedor {
-        INDISTINTO("Indistinto"),
         CURRENCY_FREAKS("Currency Freaks"),
         EXCHANGE_RATE("Exchange Rate"),
         OPEN_EXCHANGE_RATES("Open Exchange Rates");
@@ -56,7 +55,7 @@ public class Conversor {
                 fieldName = "rates";
                 fieldPolicy = FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES;
                 break;
-            default: // EXCHANGE_RATE o INDISTINTO
+            default: // EXCHANGE_RATE
                 targetURL = "https://v6.exchangerate-api.com/v6/df62716ae66999f36f365ffb/latest/USD";
                 fieldName = "conversion_rates";
                 fieldPolicy = FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES;
@@ -65,7 +64,7 @@ public class Conversor {
         return ObtenerCoeficientes(targetURL, fieldName, fieldPolicy);
     }
 
-    public double Convertir(Proveedor proveedor, String monedaOrigen, String monedaDestino, double importe) {
+    public ConversorResultado Convertir(Proveedor proveedor, String monedaOrigen, String monedaDestino, double importe) {
         Map coeficientes = ObtenerCoeficientes(proveedor);
         var monOrigen = coeficientes.get(monedaOrigen);
         var monDestino = coeficientes.get(monedaDestino);
@@ -79,7 +78,8 @@ public class Conversor {
             try {
                 double coeficienteOrigen = Double.valueOf(monOrigen.toString());
                 double coeficienteDestino = Double.valueOf(monDestino.toString());
-                return importe * coeficienteDestino / coeficienteOrigen;
+                double importeConvertido = importe * coeficienteDestino / coeficienteOrigen;
+                return new ConversorResultado(proveedor, monedaOrigen, importe, monedaDestino, importeConvertido);
             } catch (Exception e) {
                 throw new ConversorException("Error convirtiendo importe.", e);
             }

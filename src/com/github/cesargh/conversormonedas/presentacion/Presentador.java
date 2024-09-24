@@ -94,8 +94,10 @@ final class Presentador {
     private ColorTag colorDefault = ColorTag.BLUE;
     private ColorTag colorError = ColorTag.RED;
     private ColorTag colorFrase = ColorTag.YELLOW;
+    private ColorTag colorHistorial = ColorTag.WHITE;
     private ColorTag colorMenu = ColorTag.PURPLE;
     private ColorTag colorResultado = ColorTag.GREEN;
+    private ColorTag colorResultadoResaltado = ColorTag.GREEN_BOLD_BRIGHT;
     private ColorTag colorTitulo = ColorTag.BLUE_UNDERLINED;
 
     //endregion [Category: Variables}
@@ -129,6 +131,10 @@ final class Presentador {
         System.out.print(colorFrase.tag + string + ColorTag.RESET.tag + "\n");
     }
 
+    public void ImprimirHistorial(String string) {
+        System.out.print(colorHistorial.tag + string + ColorTag.RESET.tag + "\n");
+    }
+
     public void ImprimirMenu(String opcion, String descripcion) {
         System.out.print(colorMenu.tag + opcion + colorDefault.tag + descripcion + ColorTag.RESET.tag + "\n");
     }
@@ -142,7 +148,11 @@ final class Presentador {
     }
 
     public void ImprimirResultado(double importe, String proveedor) {
-        ImprimirResultado(String.format("%.2f (%s)", importe, proveedor));
+        ImprimirResultado(String.format("%.4f (%s)", importe, proveedor));
+    }
+
+    public void ImprimirResultadoResaltado(String string) {
+        System.out.print(colorResultadoResaltado.tag + string + ColorTag.RESET.tag + "\n");
     }
 
     public void ImprimirTitulo(String string) {

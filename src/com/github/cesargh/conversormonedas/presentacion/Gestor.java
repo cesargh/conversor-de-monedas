@@ -1,9 +1,11 @@
 package com.github.cesargh.conversormonedas.presentacion;
 
+import com.github.cesargh.conversormonedas.modelo.Archivador;
 import com.github.cesargh.conversormonedas.modelo.Conversor;
+import com.github.cesargh.conversormonedas.modelo.ConversorResultado;
 
 import java.security.InvalidParameterException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Gestor {
 
@@ -37,32 +39,34 @@ public class Gestor {
 
         double impOrigen = IngresarImporte();
         ParMonedas parMon = IngresarMonedas();
+        presentador.Imprimir("Procesando...");
 
         Exception excep = null;
-        double impCF = 0;
-        double impER = 0;
-        double impOE = 0;
-
+        ArrayList<ConversorResultado> lista = new ArrayList<ConversorResultado>();
         try {
             Conversor conversor = new Conversor();
-            impCF = conversor.Convertir(Conversor.Proveedor.CURRENCY_FREAKS, parMon.origen(), parMon.destino(), impOrigen);
-            impER = conversor.Convertir(Conversor.Proveedor.EXCHANGE_RATE, parMon.origen(), parMon.destino(), impOrigen);
-            impOE = conversor.Convertir(Conversor.Proveedor.OPEN_EXCHANGE_RATES, parMon.origen(), parMon.destino(), impOrigen);
+            for (Conversor.Proveedor proveedor : Conversor.Proveedor.values()) {
+                lista.add(conversor.Convertir(proveedor, parMon.origen(), parMon.destino(), impOrigen));
+            }
         } catch (Exception e) {
             excep = e;
         } finally {
             if (excep == null) {
+                Collections.sort(lista, Comparator.comparing(ConversorResultado::getProveedor));
                 presentador.ImprimirResultado("----------- Resultado -----------");
-                presentador.ImprimirResultado(impCF, Conversor.Proveedor.CURRENCY_FREAKS.nombre);
-                presentador.ImprimirResultado(impER, Conversor.Proveedor.EXCHANGE_RATE.nombre);
-                presentador.ImprimirResultado(impOE, Conversor.Proveedor.OPEN_EXCHANGE_RATES.nombre);
+                for (ConversorResultado item : lista) {
+                    presentador.ImprimirResultado(item.getDestinoImporte(), item.getProveedor().nombre);
+                }
+                Collections.sort(lista, Comparator.comparing(ConversorResultado::getDestinoImporte));
+                presentador.ImprimirResultadoResaltado("Opción recomendada :");
+                presentador.ImprimirResultadoResaltado(lista.get(lista.size()-1).getProveedor().nombre.toUpperCase());
                 presentador.ImprimirResultado("---------------------------------");
+                GuardarHistorial(lista);
             } else {
                 presentador.ImprimirError("----------- Resultado -----------");
                 presentador.ImprimirError(excep);
                 presentador.ImprimirError("---------------------------------");
             }
-
         }
 
     }
@@ -79,10 +83,23 @@ public class Gestor {
         }
     }
 
+    private void GuardarHistorial(ArrayList<ConversorResultado> lista) {
+        try {
+            Archivador archivador = new Archivador();
+            archivador.EscribirHistorial(lista);
+        } catch (Exception excep) {
+            presentador.ImprimirError("----------- Historial -----------");
+            presentador.ImprimirError("Error guardando registros.");
+            presentador.ImprimirError(excep);
+            presentador.ImprimirError("---------------------------------");
+        }
+    }
+
     private double IngresarImporte() {
         presentador.Imprimir("---------- Paso 1 de 2 ----------");
         presentador.Imprimir("Ingrese el importe a convertir.");
-        presentador.ImprimirPrompt("Por ejemplo: 1500");
+        presentador.Imprimir("(Números decimales usando punto)");
+        presentador.ImprimirPrompt("Por ejemplo: 100 o 1.85");
         double importe = 0;
         String entrada = "";
         while (scanner.hasNext()) {
@@ -139,10 +156,24 @@ public class Gestor {
     }
 
     private void VerHistorial() {
-        // TODO: Ver historial
         presentador.Imprimir();
         presentador.ImprimirTitulo("Ver historial");
-        presentador.Imprimir("En desarrollo...");
+        presentador.Imprimir("Procesando...");
+        try {
+            Archivador archivador = new Archivador();
+            List<String> historial = archivador.LeerHistorial();
+            if(historial == null) {
+                presentador.Imprimir("No hay registros.");
+            } else {
+                for (String registro : historial) {
+                    presentador.ImprimirHistorial(registro);
+                }
+                presentador.Imprimir("Fin del historial.");
+            }
+        } catch (Exception excep) {
+            presentador.ImprimirError("Error leyendo registros.");
+            presentador.ImprimirError(excep);
+        }
     }
 
     private void VerMenu() {
