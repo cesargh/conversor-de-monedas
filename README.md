@@ -44,9 +44,9 @@ Como extra, almacena las consultas realizadas en un archivo <code>historial.txt<
 
 A continuación, unas muestras de su interfaz:
 
-<div align="center">
 
-<table style="border:0">
+
+<table align="center" style="border:0">
 <tr>
 <td style="text-align: center; vertical-align: center;"><img alt="Menú" src="assets/screenshot-M.jpg" style="width:60%;height:60%;" /></td>
 <td style="text-align: center; vertical-align: center;"><img alt="Convertir importe" src="assets/screenshot-C1.jpg" style="width:60%;height:60%;" /></td>
@@ -60,7 +60,7 @@ A continuación, unas muestras de su interfaz:
 </tr>
 </table
 
-</div>
+
 
 <div align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</div>
 
