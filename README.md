@@ -6,71 +6,95 @@
 ![gson](https://img.shields.io/badge/Gson-2.11.0-red)
 ![intellij](https://img.shields.io/badge/IntelliJ-CE%202024.2.2-red)
 ![license](https://img.shields.io/badge/License-0BSD-brightgreen)
-![update](https://img.shields.io/badge/Update-21%2FSep%2F2024-blue)
+![update](https://img.shields.io/badge/Update-25%2FSep%2F2024-blue)
 ![version](https://img.shields.io/badge/Version-1.0.0-blue)
+![stage](https://img.shields.io/badge/Stage-Release-blue)
 
 </div>
 
 <h1 align="center">Conversor de Monedas</h1>
-<p align="center"><img alt="Conversor de Monedas" src="assets/logotipo.png" style="width:35%;height:35%;"/></p> 
+<div align="center"><img alt="Conversor de Monedas" src="assets/logotipo.png" style="width:35%;height:35%;" /></div> 
 
 
 <a id="readme-indice"></a>
-## Índice de contenidos:
+## Índice de Contenidos:
 ---
-- [Descripción y contexto](#descripción-y-contexto)
-- [Guía de usuario](#guía-de-usuario)
-- [Guía de instalación](#guía-de-instalación)
+- [Contexto](#contexto)
+- [Guía de Usuario](#guía-de-usuario)
+- [Guía de Instalación](#guía-de-instalación)
 - [Autor](#autor)
 - [Licencia](#licencia)
 - [Agradecimientos](#agradecimientos)
+- [Documentos Complementarios](#documentos-complementarios)
 
 
-
-## Descripción y contexto
+## Contexto
 ---
-Conversor de Monedas es una aplicación desarrollada en Java con el entorno IntelliJ para el Challenge del curso Java Orientado a Objetos de ONE + Alura Latam. Ha sido manufacturado por su autor y revisado por inteligencia artificial en Septiembre-Octubre de 2024.
+Conversor de Monedas es una aplicación desarrollada en Java con el entorno IntelliJ para el Challenge del curso Java Orientado a Objetos de ONE + Alura Latam. Ha sido manufacturada por su autor (sin ayuda de IA) en Septiembre de 2024.
 
-<p align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</p>
+<div align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</div>
 
-## Guía de usuario
+## Guía de Usuario
 ---
-TODO: Pasos básicos sobre cómo usar la aplicación con capturas de pantalla.
+Esta aplicación permite convertir un determinado importe de una moneda a otra. Para ello, accede a las cotizaciones on-line de tres proveedores de cambio y luego recomienda el más conveniente. 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Si bien son propuestas siete monedas, en realidad es posible utilizar cualquiera del universo definido por la estandarización ISO 4217. Para más información: https://en.wikipedia.org/wiki/ISO_4217
 
-<p align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</p>
+Como extra, almacena las consultas realizadas en un archivo <code>historial.txt</code> que puede ser consultado desde la misma aplicación o por cualquier editor de texto.
 
-## Guía de instalación
+A continuación, unas muestras de su interfaz:
+
+<div align="center">
+
+<table style="border:0">
+<tr>
+<td style="text-align: center; vertical-align: center;"><img alt="Menú" src="assets/screenshot-M.jpg" style="width:60%;height:60%;" /></td>
+<td style="text-align: center; vertical-align: center;"><img alt="Convertir importe" src="assets/screenshot-C1.jpg" style="width:60%;height:60%;" /></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: center;" colspan="2"><img alt="Ver historial" src="assets/screenshot-H.jpg" style="width:60%;height:60%;" /></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: center;"><img alt="Convertir importe" src="assets/screenshot-C2.jpg" style="width:60%;height:60%;" /></td>
+<td style="text-align: center; vertical-align: center;"><img alt="Convertir importe" src="assets/screenshot-C3.jpg" style="width:60%;height:60%;" /></td>
+</tr>
+</table
+
+</div>
+
+<div align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</div>
+
+## Guía de Instalación
 ---
-TODO: Paso a paso de cómo instalar la aplicación. Breve explicación de la arquitectura de carpetas, módulos, etc.
+Simplemente se requiere clonar este proyecto en el repositorio local, y luego ejecutarlo con un IDE acorde (como IntelliJ, Eclipse, etc) desde el método <code>main</code> de la clase <code>Principal</code>.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Dado que la aplicación accede a Internet para ejecutar APIs, es importante asegurar que tanto antivirus como cortafuegos no impidan dicho comportamiento.
 
-<p align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</p>
-
-### Dependencias
-Esta aplicación utiliza la versión 2.11.0 de Gson (también conocido como Google Gson). Se trata de una biblioteca de código abierto para el lenguaje de programación Java que permite la serialización y deserialización entre objetos Java y su representación en notación JSON.
-Más información en https://mvnrepository.com/artifact/com.google.code.gson/gson
-
-<p align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</p>
-
-## Autor/es
+## Autor
 ---
 César es alumno de Alura. Inició su formación en Junio de 2024 dentro del plan Oracle Next Education para Latinoamérica. Tiene 54 años y es nacido en Buenos Aires.
 
-<p align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</p>
+<div align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</div>
 
 ## Licencia 
 ---
-Licencia BSD Zero Clause (0BSD) detallada en LICENSE.txt en la raíz del repositorio. Más información en https://opensource.org/license/0bsd
+Licencia BSD Zero Clause (0BSD) detallada en <code>LICENSE.txt</code> en la raíz del repositorio. Más información en https://opensource.org/license/0bsd
 
-<p align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</p>
+<div align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</div>
 
 ## Agradecimientos 
 ---
-* Inteligencia artificial : https://openai.com/
+* Generador de logotipo : https://openai.com/
 * Generador de favicon : https://favicon.io/
-* Plantilla README.md : https://github.com/EL-BID/Plantilla-de-repositorio/blob/master/README.md
 
-<p align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</p>
+<div align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</div>
+
+## Documentos Complementarios
+---
+* Clonar un repositorio de GitHub : https://docs.github.com/es/repositories/creating-and-managing-repositories/cloning-a-repository
+* Códigos de monedas ISO 4217 : https://en.wikipedia.org/wiki/ISO_4217
+* API Currency Feaks : https://currencyfreaks.com/#Latest
+* API Exchange Rate : https://www.exchangerate-api.com/docs/standard-requests
+* API Open Exchange Rates : https://docs.openexchangerates.org/reference/latest-json
+
+<div align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</div>
