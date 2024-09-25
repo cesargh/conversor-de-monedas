@@ -44,23 +44,19 @@ Como extra, almacena las consultas realizadas en un archivo <code>historial.txt<
 
 A continuación, unas muestras de su interfaz:
 
-
-
 <table align="center" style="border:0">
 <tr>
-<td style="text-align: center; vertical-align: center;"><img alt="Menú" src="assets/screenshot-M.jpg" style="width:60%;height:60%;" /></td>
-<td style="text-align: center; vertical-align: center;"><img alt="Convertir importe" src="assets/screenshot-C1.jpg" style="width:60%;height:60%;" /></td>
+<td align="center"><img alt="Menú" src="assets/screenshot-M.jpg" style="width:60%;height:60%;" /></td>
+<td align="center"><img alt="Convertir importe" src="assets/screenshot-C1.jpg" style="width:60%;height:60%;" /></td>
 </tr>
 <tr>
-<td style="text-align: center; vertical-align: center;" colspan="2"><img alt="Ver historial" src="assets/screenshot-H.jpg" style="width:60%;height:60%;" /></td>
+<td align="center" colspan="2"><img alt="Ver historial" src="assets/screenshot-H.jpg" style="width:60%;height:60%;" /></td>
 </tr>
 <tr>
-<td style="text-align: center; vertical-align: center;"><img alt="Convertir importe" src="assets/screenshot-C2.jpg" style="width:60%;height:60%;" /></td>
-<td style="text-align: center; vertical-align: center;"><img alt="Convertir importe" src="assets/screenshot-C3.jpg" style="width:60%;height:60%;" /></td>
+<td align="center"><img alt="Convertir importe" src="assets/screenshot-C2.jpg" style="width:60%;height:60%;" /></td>
+<td align="center"><img alt="Convertir importe" src="assets/screenshot-C3.jpg" style="width:60%;height:60%;" /></td>
 </tr>
-</table
-
-
+</table>
 
 <div align="right">&#8593; <a href="#readme-indice">Índice</a> &#8593; <a href="#readme-inicio">Inicio</a> &#8593;</div>
 
